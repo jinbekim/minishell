@@ -1,6 +1,4 @@
-.vscode
-
 !objs/.keep
-objs/
+!libft/objs/.keep
 libft/libft.a
 minishell
