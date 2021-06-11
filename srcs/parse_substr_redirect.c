@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:44 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 14:27:33 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/11 18:37:03 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char		*substr_redirect(char *cmd, t_list *env, int *i)
 	else if (cmd[start] == '>' && cmd[start + 1] == '>')
 		fd = open(path, O_APPEND | O_CREAT | O_WRONLY, 0644);
 	else
-		fd = open(path, O_CREAT | O_WRONLY, 0644);
+		fd = open(path, O_TRUNC | O_CREAT | O_WRONLY, 0644);
 	free(path);
 	if (fd == -1)
 		return ((char *)-1);

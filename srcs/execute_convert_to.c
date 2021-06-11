@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:06 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 14:28:39 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/11 21:19:33 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,17 @@ char		**convert_to_envp(t_list *tmp)
 	envp = malloc(sizeof(char *) * (size + 1));
 	if (envp == NULL)
 		return (NULL);
-	envp[size] = NULL;
 	while (tmp)
 	{
-		tmp_str = ft_strjoin(((t_env *)tmp->content)->key, "=");
-		envp[i] = ft_strjoin(tmp_str, ((t_env *)tmp->content)->value);
-		free(tmp_str);
+		if (((t_env *)tmp->content)->value)
+		{
+			tmp_str = ft_strjoin(((t_env *)tmp->content)->key, "=");
+			envp[i] = ft_strjoin(tmp_str, ((t_env *)tmp->content)->value);
+			free(tmp_str);
+			i++;
+		}
 		tmp = tmp->next;
-		i++;
 	}
+	envp[i] = NULL;
 	return (envp);
 }

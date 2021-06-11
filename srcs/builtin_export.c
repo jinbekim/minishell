@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:05:04 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 15:31:22 by sushin           ###   ########.fr       */
+/*   Updated: 2021/06/11 21:08:39 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ static int	check_alnum(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] || str[i] == '=')
+	while (str[i] && str[i] != '=')
 	{
-		if (ft_isalnum(str[i]) || str[i] == '_' || str[i] == '=')
+		if (ft_isalnum(str[i]) || str[i] == '_')
 			i++;
 		else
 		{

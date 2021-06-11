@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:46 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 14:27:22 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/11 20:50:22 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ char		*substr_normal(char *cmd, t_list *env, int *i)
 			tmp = substr_switch(tmp, cmd, env, i);
 			start = (*i);
 		}
-		if (cmd[(*i)] == '\0' || cmd[*i] == '>' || cmd[*i] == '<')
+		if (ft_isblank(cmd[(*i)]) || cmd[(*i)] == '\0'
+		|| cmd[*i] == '>' || cmd[*i] == '<')
 			break ;
 		(*i)++;
 	}
