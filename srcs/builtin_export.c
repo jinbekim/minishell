@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:05:04 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/11 21:08:39 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/14 16:06:39 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,20 +110,19 @@ int			bt_export(char *argv[], t_list *env)
 	i = 1;
 	while (argv[i])
 	{
-		if (ft_isdigit(argv[i][0]))
+		if (ft_isdigit(argv[i][0]) || argv[i][0] == '=')
 		{
 			print_err_msg(argv[i], NULL);
 			ft_putstr_fd("not a valid identifier\n", 2);
-			g_exitcode = 1;
+			return (g_exitcode = 1);
 		}
 		else if (check_alnum(argv[i]))
-			g_exitcode = 1;
+			return (g_exitcode = 1);
 		if (ft_strchr(argv[i], '='))
 			yes_equal_sign_export(argv[i], env);
 		else
 			no_equal_sign_export(argv[i], env);
 		i++;
 	}
-	g_exitcode = 0;
-	return (0);
+	return (g_exitcode = 0);
 }

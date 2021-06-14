@@ -26,7 +26,7 @@ FUNC = main \
 SRC = $(addprefix ./srcs/, $(addsuffix .c, $(FUNC)))
 OBJ = $(addprefix ./objs/, $(addsuffix .o, $(FUNC)))
 
-DUBUG = -fsanitize=address
+# DUBUG = -fsanitize=address
 
 ./objs/%.o : ./srcs/%.c
 	$(CC) $(CFLAGS) $(INC) -c -o $@ $?
