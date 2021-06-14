@@ -1,4 +1,5 @@
 !objs/.keep
 !libft/objs/.keep
 libft/libft.a
+objs
 minishell

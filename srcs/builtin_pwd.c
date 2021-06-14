@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:05:02 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 14:05:03 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/14 19:46:21 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	bt_pwd(void)
 	if (buf)
 	{
 		printf("%s\n", buf);
+		free(buf);
 		g_exitcode = 0;
 		return (0);
 	}
