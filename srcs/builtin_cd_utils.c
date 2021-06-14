@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sushin <sushin@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:52:33 by sushin            #+#    #+#             */
-/*   Updated: 2021/06/10 16:00:24 by sushin           ###   ########.fr       */
+/*   Updated: 2021/06/14 21:26:34 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int			set_oldpwd(t_list *env)
 	{
 		if (!(ft_strncmp(((t_env *)env->content)->key, "OLDPWD", 7)))
 		{
+			free(((t_env *)env->content)->value);
 			((t_env *)env->content)->value = getcwd(0, 1024);
 			free(new);
 			return (0);

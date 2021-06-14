@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:05:34 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 15:47:53 by sushin           ###   ########.fr       */
+/*   Updated: 2021/06/14 21:20:10 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static int	find_env(char *str, t_list *env)
 		if (((t_env *)env->content)->value != NULL)
 			free(((t_env *)env->content)->value);
 		free(env->content);
+		free(env);
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:05:04 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/14 16:06:39 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/14 20:22:22 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	show_export(t_list *env)
 	t_list	*init_env;
 
 	init_env = env;
-	if (!(tmp_key = (char **)malloc(sizeof(char *) * ft_lstsize(env))))
+	if (!(tmp_key = (char **)malloc(sizeof(char *) * (ft_lstsize(env) + 1))))
 		return (-1);
 	i = 0;
 	while (env)
