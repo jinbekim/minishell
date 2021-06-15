@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:42 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 14:27:18 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/15 19:50:12 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char		*ft_getenv(char *key, t_list *env)
 	value = NULL;
 	while (env)
 	{
-		if (ft_strncmp(((t_env *)env->content)->key, key, ft_strlen(key)) == 0)
+		if (ft_strcmp(((t_env *)env->content)->key, key) == 0)
 		{
 			free(key);
 			value = ft_strdup(((t_env *)env->content)->value);

@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:05:19 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/14 20:23:20 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/15 19:41:12 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int			bt_cd(char *argv[], t_list *env)
 		set_oldpwd(env);
 		if ((cd_option_check3(buf, argv[1], env)))
 			return (1);
+		free(buf);
 		set_pwd(env);
 	}
 	g_exitcode = 0;

@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:52:33 by sushin            #+#    #+#             */
-/*   Updated: 2021/06/14 21:26:34 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/15 19:41:40 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char		*get_oldpwd(t_list *env)
 	{
 		if (ft_strncmp(((t_env *)env->content)->key, "OLDPWD", 7) == 0)
 		{
-			value = ((t_env *)env->content)->value;
+			value = ft_strdup(((t_env *)env->content)->value);
 			break ;
 		}
 		env = env->next;
