@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:05:34 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/14 21:20:10 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/15 16:34:44 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void		unset_by_export(char *str, t_list *env)
 				env->next->prev = env->prev;
 			free(((t_env *)env->content)->key);
 			free(((t_env *)env->content)->value);
+			free(env->content);
 			free(env);
 			break ;
 		}
