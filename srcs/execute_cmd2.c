@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:01 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 14:31:24 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/16 13:51:58 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void		execute_cmd2(t_cmd *cmd, t_list *env)
 	tmp = parse_cmd2(cmd->cmd, env);
 	if (tmp == NULL)
 	{
-		print_errno();
 		if (is_child(cmd) == 0)
 			return ;
 		exit(1);

@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:42 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/16 11:32:38 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/16 13:48:02 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ char		*ft_getenv(char *key, t_list *env)
 		env = env->next;
 	}
 	if (env == NULL)
+	{
+		free(key);
 		value = ft_strdup("");
+	}
 	return (value);
 }
 
