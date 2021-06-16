@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:42 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/15 19:50:12 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/16 11:32:38 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char		*ft_getenv(char *key, t_list *env)
 	return (value);
 }
 
-char		*substr_env(char *cmd, t_list *env, int *i)
+static char		*substr_env(char *cmd, t_list *env, int *i)
 {
 	char	*env_key;
 	char	*env_value;
@@ -71,4 +71,32 @@ char		*substr_env(char *cmd, t_list *env, int *i)
 	env_key = ft_substr(cmd, start, (*i) - start);
 	env_value = ft_getenv(env_key, env);
 	return (env_value);
+}
+
+char	*substitution_env_var(char *cmd, t_list *env)
+{
+	char	single_quote;
+	char	*new_cmd;
+	int		i;
+	int		start;
+
+	i = 0;
+	single_quote = 0;
+	new_cmd = NULL;
+	start = 0;
+	while (cmd[i])
+	{
+		if (cmd[i] == '\'' && single_quote == 0 && (i == 0 || cmd[i - 1] != ESCAPE))
+			single_quote = 1;
+		else if (cmd[i] == '\'' && single_quote == 1)
+			single_quote = 0;
+		else if (single_quote == 0 && cmd[i] == '$' && (i == 0 || cmd[i - 1] != ESCAPE))
+		{
+			new_cmd = make_tmp(cmd, new_cmd, start, &i);
+			new_cmd = ft_join_both_free(new_cmd, substr_env(cmd, env, &i));
+			start = i;
+		}
+		i++;
+	}
+	return (new_cmd = make_tmp(cmd, new_cmd, start, &i));
 }

@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:46 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/11 20:50:22 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/15 20:38:17 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ static char	*substr_switch(char *tmp, char *cmd, t_list *env, int *i)
 	char	*tmp2;
 
 	tmp2 = NULL;
-	if (cmd[(*i)] == '$')
-		tmp2 = substr_env(cmd, env, i);
-	else if (cmd[(*i)] == '\"')
+	if (cmd[(*i)] == '\"')
 		tmp2 = substr_quote_double(cmd, env, i);
 	else if (cmd[(*i)] == '\'')
 		tmp2 = substr_quote_single(cmd, env, i);
@@ -49,7 +47,7 @@ char		*substr_normal(char *cmd, t_list *env, int *i)
 	{
 		if (cmd[(*i)] == ESCAPE)
 			(*i)++;
-		else if (cmd[(*i)] == '$' || cmd[(*i)] == '\"' || cmd[(*i)] == '\'')
+		else if (cmd[(*i)] == '\"' || cmd[(*i)] == '\'')
 		{
 			tmp = make_tmp(cmd, tmp, start, i);
 			tmp = substr_switch(tmp, cmd, env, i);

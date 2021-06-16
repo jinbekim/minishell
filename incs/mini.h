@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:54:57 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 16:26:13 by sushin           ###   ########.fr       */
+/*   Updated: 2021/06/15 20:56:08 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ char			**convert_to_envp(t_list *tmp);
 char			*make_tmp(char *cmd, char *tmp, int start, int *i);
 char			*ft_join_both_free(char *tmp1, char *tmp2);
 char			*ft_getenv(char *key, t_list *env);
-char			*substr_env(char *cmd, t_list *env, int *i);
 char			*substr_normal(char *cmd, t_list *env, int *i);
 char			*substr_quote_double(char *cmd, t_list *env, int *i);
 char			*substr_quote_single(char *cmd, t_list *env, int *i);
 char			*substr_redirect(char *cmd, t_list *env, int *i);
+char			*substitution_env_var(char *cmd, t_list *env);
 
 /*
 ** Part. executer

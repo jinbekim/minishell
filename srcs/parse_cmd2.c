@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:36 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 14:27:09 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/15 20:59:00 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ t_list		*parse_cmd2(char *cmd, t_list *env)
 	i = -1;
 	tmp = NULL;
 	argv = NULL;
+	cmd = substitution_env_var(cmd, env);
 	while (cmd[++i])
 	{
 		if (cmd[i] == ' ')
@@ -103,5 +104,6 @@ t_list		*parse_cmd2(char *cmd, t_list *env)
 		if (cmd[i] == '\0' || cmd[i] == '<' || cmd[i] == '>')
 			i--;
 	}
+	free(cmd);
 	return (argv);
 }
