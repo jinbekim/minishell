@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:32 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 14:26:14 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/17 10:45:01 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,16 @@ int			main(int argc, char **argv, char **envp)
 	{
 		set_initial_termios();
 		cmd = parse_cmd(line, cmd);
-		if (cmd == NULL && line[0] != '\0')
+		if ((cmd == NULL && line[0] != '\0' && ft_isblank(line[0]) == 0)
+		|| (ft_lstsize(cmd) > 9))
+		{
+			g_exitcode = 258;
 			printf("syntax error\n");
-		execute_cmd(cmd, env);
+		}
+		else
+			execute_cmd(cmd, env);
 		clear_shell(cmd, line, std);
 	}
-	free(line);
 	set_initial_termios();
 	printf("exit\n");
 	return (0);

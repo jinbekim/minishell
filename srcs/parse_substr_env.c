@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:42 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/16 13:48:02 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/17 10:37:05 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char		*ft_getenv(char *key, t_list *env)
 	return (value);
 }
 
-static char		*substr_env(char *cmd, t_list *env, int *i)
+char		*substr_env(char *cmd, t_list *env, int *i)
 {
 	char	*env_key;
 	char	*env_value;
@@ -60,7 +60,7 @@ static char		*substr_env(char *cmd, t_list *env, int *i)
 	if (cmd[start] == '?')
 	{
 		(*i)++;
-		return (ft_strdup(ft_itoa(g_exitcode)));
+		return (ft_itoa(g_exitcode));
 	}
 	if (ft_isdigit(cmd[start]))
 	{
@@ -76,24 +76,31 @@ static char		*substr_env(char *cmd, t_list *env, int *i)
 	return (env_value);
 }
 
-char	*substitution_env_var(char *cmd, t_list *env)
+static void	init_var(int *i, int *start, char *sing, char **cmd)
+{
+	*i = 0;
+	*start = 0;
+	*sing = 0;
+	*cmd = NULL;
+}
+
+char		*substitution_env_var(char *cmd, t_list *env)
 {
 	char	single_quote;
 	char	*new_cmd;
 	int		i;
 	int		start;
 
-	i = 0;
-	single_quote = 0;
-	new_cmd = NULL;
-	start = 0;
+	init_var(&i, &start, &single_quote, &new_cmd);
 	while (cmd[i])
 	{
-		if (cmd[i] == '\'' && single_quote == 0 && (i == 0 || cmd[i - 1] != ESCAPE))
+		if (cmd[i] == '\'' && single_quote == 0\
+		&& (i == 0 || cmd[i - 1] != ESCAPE))
 			single_quote = 1;
 		else if (cmd[i] == '\'' && single_quote == 1)
 			single_quote = 0;
-		else if (single_quote == 0 && cmd[i] == '$' && (i == 0 || cmd[i - 1] != ESCAPE))
+		else if (single_quote == 0 && cmd[i] == '$'\
+		&& (i == 0 || cmd[i - 1] != ESCAPE))
 		{
 			new_cmd = make_tmp(cmd, new_cmd, start, &i);
 			new_cmd = ft_join_both_free(new_cmd, substr_env(cmd, env, &i));

@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:04:24 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/10 14:28:15 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/17 09:59:22 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void		print_history(char **backup, char *past)
 	}
 	else
 	{
+		free(*backup);
 		*backup = tmp;
 		tmp = NULL;
 	}
