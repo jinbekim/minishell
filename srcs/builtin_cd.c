@@ -6,7 +6,7 @@
 /*   By: jinbekim <jinbekim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:05:19 by jinbekim          #+#    #+#             */
-/*   Updated: 2021/06/15 19:41:12 by jinbekim         ###   ########.fr       */
+/*   Updated: 2021/06/21 10:14:52 by jinbekim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	cd_option_check2(t_list *env)
 	buf = get_oldpwd(env);
 	set_oldpwd(env);
 	chdir(buf);
+	free(buf);
 	set_pwd(env);
 }
 
@@ -51,7 +52,7 @@ int			bt_cd(char *argv[], t_list *env)
 	t_list	*init_env;
 
 	init_env = env;
-	if (argv[1] == NULL || !(ft_strncmp(argv[1], "~", ft_strlen(argv[1]))))
+	if (argv[1] == NULL || !(ft_strncmp(argv[1], "~", ft_strlen(argv[1]) + 1)))
 	{
 		while (env)
 		{
@@ -59,7 +60,7 @@ int			bt_cd(char *argv[], t_list *env)
 			env = env->next;
 		}
 	}
-	else if (!(ft_strncmp(argv[1], "-", ft_strlen(argv[1]))))
+	else if (!(ft_strncmp(argv[1], "-", ft_strlen(argv[1]) + 1)))
 		cd_option_check2(env);
 	else
 	{
