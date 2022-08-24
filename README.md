@@ -1,5 +1,4 @@
 # Minishell (with sushin-42)
-![minishell](https://user-images.githubusercontent.com/59330110/137307498-a0bee030-ddf8-4aba-9395-098b1d3febf9.gif)
 
 ## *Summary*:
 The objective of this project is for you to create a simple shell.
